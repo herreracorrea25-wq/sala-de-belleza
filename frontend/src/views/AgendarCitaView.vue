@@ -50,6 +50,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { apiUrl } from '../utils/api';
 
 const router = useRouter();
 const clientesOptions = ref([]);
@@ -69,8 +70,8 @@ const form = ref({
 onMounted(async () => {
   try {
     const [resCli, resEst] = await Promise.all([
-      fetch('http://localhost:4000/api/clientes'),
-      fetch('http://localhost:4000/api/estilistas')
+      fetch(apiUrl('/api/clientes')),
+      fetch(apiUrl('/api/estilistas'))
     ]);
     
     const clientes = await resCli.json();
@@ -85,7 +86,7 @@ onMounted(async () => {
 
 const guardarCita = async () => {
   try {
-    const res = await fetch('http://localhost:4000/api/citas', {
+    const res = await fetch(apiUrl('/api/citas'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form.value)

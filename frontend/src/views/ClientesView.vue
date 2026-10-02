@@ -28,13 +28,14 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { apiUrl } from '../utils/api';
 
 const clientes = ref([]);
 const nuevo = ref({ nombre: '', telefono: '', email: '' });
 
 const cargarClientes = async () => {
   try {
-    const res = await fetch('http://localhost:4000/api/clientes');
+    const res = await fetch(apiUrl('/api/clientes'));
     clientes.value = await res.json();
   } catch (error) {
     console.error("Error al cargar clientes:", error);
@@ -43,7 +44,7 @@ const cargarClientes = async () => {
 
 const agregarCliente = async () => {
   try {
-    const res = await fetch('http://localhost:4000/api/clientes', {
+    const res = await fetch(apiUrl('/api/clientes'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(nuevo.value)

@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { apiUrl } from '../utils/api'
 
 export const useSalonStore = defineStore('salon', () => {
   // Estado básico
@@ -7,13 +8,13 @@ export const useSalonStore = defineStore('salon', () => {
   const estilistas = ref([])
   const clientes = ref([])
 
-  // Acciones simples para conectar con tu backend en el puerto 4000
+  // Acciones para cargar datos del backend
   const obtenerDatos = async () => {
     try {
-      const resEst = await fetch('http://localhost:4000/api/estilistas')
+      const resEst = await fetch(apiUrl('/api/estilistas'))
       estilistas.value = await resEst.json()
 
-      const resCli = await fetch('http://localhost:4000/api/clientes')
+      const resCli = await fetch(apiUrl('/api/clientes'))
       clientes.value = await resCli.json()
     } catch (error) {
       console.error("Error al conectar con el backend", error)

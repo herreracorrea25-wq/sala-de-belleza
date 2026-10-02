@@ -20,6 +20,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { apiUrl } from '../utils/api';
 
 const fechaSeleccionada = ref(new Date().toISOString().split('T')[0]);
 const citas = ref([]);
@@ -33,7 +34,7 @@ const columns = [
 
 const cargarAgenda = async () => {
   try {
-    const res = await fetch(`http://localhost:4000/api/citas?fecha=${fechaSeleccionada.value}`);
+    const res = await fetch(apiUrl(`/api/citas?fecha=${fechaSeleccionada.value}`));
     citas.value = await res.json();
   } catch (error) {
     console.error("Error al cargar la agenda:", error);
