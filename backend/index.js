@@ -4,9 +4,9 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
-const Estilista = require('./models/Estilista');
-const Cliente = require('./models/Cliente');
-const Cita = require('./models/Cita');
+const Estilista = require('./models/estilista');
+const Cliente = require('./models/cliente');
+const Cita = require('./models/cita');
 
 const app = express();
 app.use(cors());
