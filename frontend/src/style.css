@@ -1,0 +1,31 @@
+:root {
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #30253a;
+  background: #faf8fc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #faf8fc;
+}
+
+#app {
+  min-height: 100vh;
+}
